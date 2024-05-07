@@ -15,3 +15,25 @@
     /* CSS to Reset */
   }
 }
+
+
+@mixin underline_transition($width) {
+  &::after{
+  content: '';
+  display: block;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  height: 0.2rem;
+  background-color: red;
+  transform: scaleX(0);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  }
+  &:hover{
+    &::after{
+      transform: scaleX($width);
+    }
+  }
+}

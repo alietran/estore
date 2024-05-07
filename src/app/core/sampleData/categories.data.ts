@@ -1,37 +1,37 @@
-import { ICategory } from '../models/interface/category.interface';
+import { ICategory } from "../models/interface/category.interface";
 
 export const categories: ICategory[] = [
   {
     id: 1,
-    label: 'Mens',
-    icon: 'pi pi-fw pi-mars',
-    items: [
-      {
-        label: 'Casual Wear',
-      },
-    ],
+    category: "Mens",
   },
   {
     id: 2,
-    label: 'Womens',
-    icon: 'pi pi-fw pi-venus',
-    items: [
-      {
-        label: 'Poly wear',
-      },
-      {
-        label: 'Foot wear',
-      },
-    ],
+    category: "Womens",
   },
   {
     id: 3,
-    label: 'Kids',
-    icon: 'pi pi-fw pi-user',
-    items: [
-      {
-        label: 'Accessories',
-      },
-    ],
+    category: "Kids",
   },
+  {
+    id: 4,
+    category: "Kids",
+    parent_category_id: 1,
+  },
+  {
+    id: 5,
+    category: "Party Wear",
+    parent_category_id: 2,
+  },
+  {
+    id: 6,
+    category: "Foot Wear",
+    parent_category_id: 2,
+  },
+  {
+    id: 7,
+    category: "Accessory",
+    parent_category_id: 3,
+  },
+ 
 ];

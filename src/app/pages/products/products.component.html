@@ -1,0 +1,20 @@
+<div class="flex gap-10 flex-wrap justify-around">
+  <p-card
+    header="{{ item.price | currency }}"
+    subheader="{{ item.product_name }}"
+    [style]="{ width: '300px',}"
+    *ngFor="let item of getProducts()"
+  >
+    <ng-template pTemplate="header">
+      <p-image
+        src="../../../assets/jacket.jpg"
+        alt="Image"
+        width="300"
+        [preview]="true"
+      />
+    </ng-template>
+    <p class="p-0">
+      <p-rating [(ngModel)]="item.rating" [cancel]="false" [readonly]="true" class="text-[#FF9632]" style="color:#FF9632" [iconOnStyle]="{'color':'##FF9632'}" />
+    </p>
+  </p-card>
+</div>

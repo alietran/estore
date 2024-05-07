@@ -1,10 +1,5 @@
 export interface ICategory {
-    id: number;
-    label: string;
-    icon?: string;
-    items: ICategoryChild[];
-  }
-
-  export interface ICategoryChild {
-    label: string;
-  }
+  id: number;
+  category: string;
+  parent_category_id?: number;
+}
