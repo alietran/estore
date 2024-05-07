@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +16,10 @@ const routes: Routes = [
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'products', component: ProductsComponent },
     ],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
