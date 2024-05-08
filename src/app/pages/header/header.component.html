@@ -4,14 +4,13 @@
   </div>
   <div class="flex">
     <div class="card flex justify-content-center bg-gray-200">
-      <p-dropdown
-        [(ngModel)]="selectedCountry"
-        placeholder="Select Your Country"
-        optionLabel="name"
-        [showClear]="true"
-        [options]="countries"
-      >
-      </p-dropdown>
+      <select class="dropdown bg-gray-200 w-24">
+        <option
+          *ngFor="let item of categoriesStoreItem.topLevelCategories$ | async"
+        >
+          {{ item.category }}
+        </option>
+      </select>
     </div>
     <span class="p-input-icon-left">
       <input

@@ -1,37 +1,13 @@
-import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-
-// interface MenuItem {
-//   icon: string;
-//   label: string;
-// }
+import { CategoryStoreItem } from "src/app/core/services/categories.storeItem";
+import { Component } from "@angular/core";
+import { ICategory } from "src/app/core/models/interface/category.interface";
 
 @Component({
-  selector: 'app-cate-navigate',
-  templateUrl: './cate-navigate.component.html',
-  styleUrl: './cate-navigate.component.scss',
+  selector: "app-cate-navigate",
+  templateUrl: "./cate-navigate.component.html",
+  styleUrl: "./cate-navigate.component.scss",
 })
 export class CateNavigateComponent {
-  items!: MenuItem[];
-
-  ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Men',
-        icon: 'pi pi-fw pi-mars',
-      },
-      {
-        label: 'Women',
-        icon: 'pi pi-fw pi-venus',
-      },
-      {
-        label: 'Kids',
-        icon: 'pi pi-fw pi-user',
-      },
-      {
-        label: 'Best offers',
-        icon: 'pi pi-fw pi-gift',
-      },
-    ];
-  }
+  categories: ICategory[] = [];
+  constructor(public categoryStore: CategoryStoreItem) {}
 }

@@ -13,6 +13,9 @@ import { ProductsComponent } from "../products/products.component";
 import { CardModule } from "primeng/card";
 import { ImageModule } from "primeng/image";
 import { RatingModule } from 'primeng/rating';
+import { HttpClientModule } from "@angular/common/http";
+import { CategoryService } from "src/app/core/services/category.service";
+import { CategoryStoreItem } from "src/app/core/services/categories.storeItem";
 
 @NgModule({
   declarations: [
@@ -31,9 +34,10 @@ import { RatingModule } from 'primeng/rating';
     AccordionModule,
     CardModule,
     ImageModule,
-    RatingModule
+    RatingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CategoryService, CategoryStoreItem],
   bootstrap: [],
 })
 export class HomeModule {}

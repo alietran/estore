@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { ICategory } from '../models/interface/category.interface';
-import { categories } from '../sampleData/categories.data';
+import { Injectable } from "@angular/core";
+import { ICategory } from "../models/interface/category.interface";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CategoryService {
- 
+  constructor(private httpClient: HttpClient) {}
 
-  getAllCategory(): ICategory[] {
-    return categories;
+  getAllCategory(): Observable<ICategory[]> {
+    return this.httpClient.get<ICategory[]>(
+      "http://localhost:5001/productCategories"
+    );
   }
 }

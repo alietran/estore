@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ICategory } from "src/app/core/models/interface/category.interface";
+import { CategoryStoreItem } from "src/app/core/services/categories.storeItem";
 
 interface City {
   name: string;
@@ -6,22 +8,18 @@ interface City {
 }
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  countries!: City[];
+  // countries: ICategory[] = [];
 
-  selectedCountry!: City;
-  constructor() {}
+  // selectedCountry!: City;
+  constructor(public categoriesStoreItem: CategoryStoreItem) {}
 
   ngOnInit() {
-    this.countries = [
-      { name: 'Men', code: 'M' },
-      { name: 'Women', code: 'W' },
-      { name: 'Kids', code: 'K' },
-    ];
-    this.selectedCountry = this.countries[0];
+    // this.countries = this.categoriesStoreItem.topLevelCategories$;
+    // this.selectedCountry = this.countries[0];
   }
 }

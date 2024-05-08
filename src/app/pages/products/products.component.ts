@@ -11,7 +11,9 @@ export class ProductsComponent {
   products: IProduct[] = [];
 
   constructor(private productService: ProductService) {
-    this.products = productService.getAllProduct();
+    productService
+      .getAllProduct()
+      .subscribe((products) => (this.products = products));
   }
 
   getProducts(): IProduct[] {

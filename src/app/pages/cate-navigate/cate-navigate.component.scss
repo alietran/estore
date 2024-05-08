@@ -1,9 +1,18 @@
-::ng-deep .p-menubar {
+@import "../../../styles.scss";
+.navigation-container {
   background-color: black;
-  color: #fff;
-  border-radius: 0;
-}
 
-::ng-deep .p-menuitem-text {
-  background-color: none;
+  ul {
+    display: flex;
+    gap: 60px;
+    height: 45px;
+    padding-left: 20px;
+    align-items: center;
+    li {
+      color: white;
+      a {
+        @include underline_transition(1.4);
+      }
+    }
+  }
 }
