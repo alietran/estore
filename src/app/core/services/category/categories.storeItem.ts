@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { ICategory } from "../models/interface/category.interface";
+import { ICategory } from "../../models/interface/category.interface";
 import { CategoryService } from "./category.service";
-import { StoreItem } from "../shared/storeItem";
+import { StoreItem } from "../../shared/storeItem";
 import { Observable, map } from "rxjs";
 
 @Injectable()

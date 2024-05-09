@@ -14,5 +14,7 @@
 }
 
 a{
-  @include underline_transition(0.7)
+  @include underline_transition(0.7);
+  cursor: pointer;
 }
+

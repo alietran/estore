@@ -1,8 +1,7 @@
-import { CategoryService } from "./../../core/services/category.service";
-import { Component, OnDestroy } from "@angular/core";
-import { ICategory } from "src/app/core/models/interface/category.interface";
+import { Component, EventEmitter, OnDestroy, Output } from "@angular/core";
 import { Subscription } from "rxjs";
-import { CategoryStoreItem } from "src/app/core/services/categories.storeItem";
+import { ICategory } from "src/app/core/models/interface/category.interface";
+import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
 
 @Component({
   selector: "app-sidenav",
@@ -10,14 +9,14 @@ import { CategoryStoreItem } from "src/app/core/services/categories.storeItem";
   styleUrl: "./sidenav.component.scss",
 })
 export class SidenavComponent implements OnDestroy {
+  @Output()
+  subCategoryClicked: EventEmitter<number> = new EventEmitter<number>();
+
   categories: ICategory[] = [];
 
   subscriptions: Subscription = new Subscription();
 
-  constructor(
-    private categoryService: CategoryService,
-    categoryStore: CategoryStoreItem
-  ) {
+  constructor(categoryStore: CategoryStoreItem) {
     this.subscriptions.add(
       categoryStore.categories$.subscribe((categories) => {
         this.categories = categories;
@@ -31,6 +30,10 @@ export class SidenavComponent implements OnDestroy {
         ? category.parent_category_id === parentCategoryId
         : category.parent_category_id === null
     );
+  }
+
+  onSubCategoryClick(subCate: ICategory): void {
+    this.subCategoryClicked.emit(subCate.id);
   }
 
   ngOnDestroy(): void {

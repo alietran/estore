@@ -9,7 +9,7 @@
           class="text-center"
           *ngFor="let childCategory of getCategories(category.id)"
         >
-          <a href="">{{ childCategory.category }}</a>
+          <a (click)="onSubCategoryClick(childCategory)">{{ childCategory.category }}</a>
         </li>
       </ul>
     </p-accordionTab>

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ICategory } from "../models/interface/category.interface";
+import { ICategory } from "../../models/interface/category.interface";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 

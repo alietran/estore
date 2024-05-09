@@ -3,13 +3,15 @@
     header="{{ item.price | currency }}"
     subheader="{{ item.product_name }}"
     [style]="{ width: '300px',}"
-    *ngFor="let item of getProducts()"
+    *ngFor="let item of productStoreItem.products$ | async"
+    [routerLink]="['../product', item.id]"
   >
     <ng-template pTemplate="header">
       <p-image
-        src="../../../assets/jacket.jpg"
-        alt="Image"
+        [src]="'../../../assets/' + item.product_img"
+        [alt]="'../../../assets/' + item.product_img"
         width="300"
+        height="300"
         [preview]="true"
       />
     </ng-template>
@@ -23,5 +25,10 @@
         [iconOnStyle]="{ color: '##FF9632' }"
       />
     </p>
+    <button
+    class="flex mx-auto mt-2 justify-center text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+    >
+      Add to cart
+    </button>
   </p-card>
 </div>

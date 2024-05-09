@@ -12,6 +12,7 @@
       color: white;
       a {
         @include underline_transition(1.4);
+        cursor: pointer;
       }
     }
   }

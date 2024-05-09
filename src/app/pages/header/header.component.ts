@@ -1,11 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ICategory } from "src/app/core/models/interface/category.interface";
-import { CategoryStoreItem } from "src/app/core/services/categories.storeItem";
-
-interface City {
-  name: string;
-  code: string;
-}
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
 
 @Component({
   selector: "app-header",
@@ -13,13 +7,14 @@ interface City {
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  // countries: ICategory[] = [];
+  @Output()
+  searchClicked: EventEmitter<string> = new EventEmitter<string>();
 
-  // selectedCountry!: City;
   constructor(public categoriesStoreItem: CategoryStoreItem) {}
 
-  ngOnInit() {
-    // this.countries = this.categoriesStoreItem.topLevelCategories$;
-    // this.selectedCountry = this.countries[0];
+  ngOnInit() {}
+
+  onClickSearch(keyword: string) {
+    this.searchClicked.emit(keyword);
   }
 }

@@ -12,3 +12,12 @@
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
   color: #faaf00 !important;
 }
+:host ::ng-deep .p-image-preview-container {
+  width: 100%;
+}
+
+:host ::ng-deep .p-image-preview-container img {
+  height: 350px;
+  object-fit: contain;
+  object-position: center;
+}
