@@ -4,16 +4,18 @@
     subheader="{{ item.product_name }}"
     [style]="{ width: '300px',}"
     *ngFor="let item of productStoreItem.products$ | async"
-    [routerLink]="['../product', item.id]"
   >
     <ng-template pTemplate="header">
-      <p-image
-        [src]="'../../../assets/' + item.product_img"
-        [alt]="'../../../assets/' + item.product_img"
-        width="300"
-        height="300"
-        [preview]="true"
-      />
+      <a
+        [routerLink]="['../product', item.id]"
+      >
+        <p-image
+          [src]="'../../../assets/' + item.product_img"
+          [alt]="'../../../assets/' + item.product_img"
+          width="300"
+          height="300"
+          [preview]="true"
+      /></a>
     </ng-template>
     <p class="p-0">
       <p-rating
@@ -25,8 +27,8 @@
         [iconOnStyle]="{ color: '##FF9632' }"
       />
     </p>
-    <button
-    class="flex mx-auto mt-2 justify-center text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+    <button (click)="addToCart(item)"
+      class="flex mx-auto mt-2 justify-center text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
     >
       Add to cart
     </button>

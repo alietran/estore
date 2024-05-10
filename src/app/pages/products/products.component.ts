@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { IProduct } from "src/app/core/models/interface/product.interface";
+import { CartStoreItem } from "src/app/core/services/cart/cart.storeItem";
 import { ProductStoreItem } from "src/app/core/services/product/product.storeItem";
 
 @Component({
@@ -10,5 +11,12 @@ import { ProductStoreItem } from "src/app/core/services/product/product.storeIte
 export class ProductsComponent {
   products: IProduct[] = [];
 
-  constructor(public productStoreItem: ProductStoreItem) {}
+  constructor(
+    public productStoreItem: ProductStoreItem,
+    public cartIem: CartStoreItem
+  ) {}
+
+  addToCart(product: IProduct): void {
+    this.cartIem.addProduct(product);
+  }
 }

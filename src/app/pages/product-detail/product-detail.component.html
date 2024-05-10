@@ -1,6 +1,6 @@
 <section class="text-gray-700 body-font overflow-hidden bg-white">
   <div class="container px-5 py-12 mx-auto">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap" *ngIf="product">
       <img
         [src]="'../../../assets/' + product.product_img"
         class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
@@ -73,7 +73,7 @@
           <span class="title-font font-medium text-2xl text-gray-900">{{
             product.price | currency
           }}</span>
-          <button
+          <button (click)="addToCart()"
             class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
           >
             Add to cart

@@ -23,6 +23,7 @@ import { ProductsComponent } from "../products/products.component";
 import { SidenavComponent } from "../sidenav/sidenav.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
+import { CartComponent } from "../cart/cart.component";
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -32,6 +33,7 @@ import { HomeComponent } from "./home.component";
     ProductsComponent,
     ProductItemComponent,
     ProductDetailComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

@@ -22,10 +22,10 @@
       <i class="pi pi-user"></i>
       <span>SignIn / Register</span>
     </div>
-    <div class="flex">
+    <a class="flex" routerLink="/home/cart">
       <i class="pi pi-shopping-cart text-2xl relative"
-        ><p-badge [value]="2"></p-badge
+        ><p-badge class="absolute badge" [value]="cartStore.cart.totalProducts ? cartStore.cart.totalProducts : 0"></p-badge
       ></i>
-    </div>
+    </a>
   </div>
 </div>
