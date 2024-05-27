@@ -1,0 +1,51 @@
+<div class="login-wrap">
+  <div class="login-html">
+    <h2 class="text-2xl text-white mb-3">Sign In</h2>
+    <form class="login-form" (ngSubmit)="login()" [formGroup]="signinForm">
+      <div class="sign-in-htm">
+        <h2 class="text-red-500" *ngIf="errLogin">
+          Email or password is not correct
+        </h2>
+        <div class="group required">
+          <label for="email" class="label mb-2">Email</label>
+          <input id="email" type="text" class="input" formControlName="email" />
+          <span
+            class="text-red-500 pt-1"
+            *ngIf="signinForm.controls?.['email']?.touched && signinForm.controls?.['email']?.errors?.['required']"
+            >Email is required</span
+          >
+
+          <span
+            class="text-red-500 pt-1"
+            *ngIf="signinForm.controls?.['email']?.touched && signinForm.controls?.['email']?.errors?.['email']"
+            >Email is invalid</span
+          >
+        </div>
+        <div class="group required">
+          <label for="password" class="label mb-2">Password</label>
+          <input
+            id="password"
+            type="password"
+            class="input"
+            data-type="password"
+            formControlName="password"
+          />
+          <span
+            class="text-red-500 pt-1"
+            *ngIf="signinForm.controls?.['password']?.touched && signinForm.controls?.['password']?.errors"
+            >Password is required</span
+          >
+        </div>
+        <div class="group">
+          <span class="text-white" *ngIf="!loginSuccess">
+            Don't have account ? <a routerLink="/home/signup">Sign up</a></span
+          >
+          <span *ngIf="loginSuccess">{{ userInfo }}</span>
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="Sign In" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

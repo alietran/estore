@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AccordionModule } from "primeng/accordion";
 import { BadgeModule } from "primeng/badge";
@@ -15,15 +15,18 @@ import { CategoryStoreItem } from "src/app/core/services/category/categories.sto
 import { CategoryService } from "src/app/core/services/category/category.service";
 import { ProductService } from "src/app/core/services/product/product.service";
 import { ProductStoreItem } from "src/app/core/services/product/product.storeItem";
+import { UserService } from "src/app/core/services/user/user.service";
+import { CartComponent } from "../cart/cart.component";
 import { CateNavigateComponent } from "../cate-navigate/cate-navigate.component";
 import { HeaderComponent } from "../header/header.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
 import { ProductItemComponent } from "../product-item/product-item.component";
 import { ProductsComponent } from "../products/products.component";
 import { SidenavComponent } from "../sidenav/sidenav.component";
+import { SigninComponent } from "../signin/signin.component";
+import { SignupComponent } from "../signup/signup.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
-import { CartComponent } from "../cart/cart.component";
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -33,7 +36,9 @@ import { CartComponent } from "../cart/cart.component";
     ProductsComponent,
     ProductItemComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +53,7 @@ import { CartComponent } from "../cart/cart.component";
     RouterModule,
     HomeRoutingModule,
     BadgeModule,
+    ReactiveFormsModule,
   ],
   providers: [
     CategoryService,
@@ -55,6 +61,7 @@ import { CartComponent } from "../cart/cart.component";
     ProductService,
     ProductStoreItem,
     CartStoreItem,
+    UserService,
   ],
   bootstrap: [],
 })

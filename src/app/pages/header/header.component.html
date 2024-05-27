@@ -20,11 +20,24 @@
   <div class="flex gap-5 items-center">
     <div class="flex items-center gap-1">
       <i class="pi pi-user"></i>
-      <span>SignIn / Register</span>
+      <div *ngIf="!isUserAuthenticated">
+        <span routerLink="signin"> SignIn </span>/<span routerLink="signup"
+          >Register</span
+        >
+      </div>
+
+      <div *ngIf="isUserAuthenticated">
+        {{ userName }} | <span (click)="logout()">Logout</span>
+      </div>
     </div>
     <a class="flex" routerLink="/home/cart">
       <i class="pi pi-shopping-cart text-2xl relative"
-        ><p-badge class="absolute badge" [value]="cartStore.cart.totalProducts ? cartStore.cart.totalProducts : 0"></p-badge
+        ><p-badge
+          class="absolute badge"
+          [value]="
+            cartStore.cart.totalProducts ? cartStore.cart.totalProducts : 0
+          "
+        ></p-badge
       ></i>
     </a>
   </div>

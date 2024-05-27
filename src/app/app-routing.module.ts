@@ -12,6 +12,7 @@ const routes: Routes = [
       import("./pages/home/home.module").then((m) => m.HomeModule),
   },
   { path: "", redirectTo: "home/products", pathMatch: "full" },
+
   {
     path: "admin",
     component: AdminLayoutComponent,
