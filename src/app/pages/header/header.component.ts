@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
 } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { CartStoreItem } from "src/app/core/services/cart/cart.storeItem";
 import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     public categoriesStoreItem: CategoryStoreItem,
     public cartStore: CartStoreItem,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.subscription.add(
       this.userService.isUserAuthenticated$.subscribe((value) => {
@@ -39,15 +41,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {}
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   onClickSearch(keyword: string) {
     this.searchClicked.emit(keyword);
   }
 
   logout() {
     this.userService.logout();
+    this.router.navigate(["home/products"]);
+  }
+
+  pastOrder() {
+    this.router.navigate(["home/past-order"]);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

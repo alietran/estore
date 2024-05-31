@@ -1,0 +1,104 @@
+<div class="flex mx-auto w-4/5 gap-10 my-4">
+  <div>
+    <h3>Select order</h3>
+  </div>
+  <select class="bg-gray-100" (change)="selectOrder($event)">
+    <option value="0">Please select an option</option>
+    <option
+      value="{{ pastOrder.orderId }}"
+      *ngFor="let pastOrder of pastOrders"
+    >
+      {{ pastOrder.orderId }} Date: {{ pastOrder.orderDate }}
+    </option>
+  </select>
+</div>
+
+<div class="card !my-10" *ngIf="pastOrder">
+  <div class="row w-full flex">
+    <div class="w-[60%] cart relative">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Shopping Cart</b></h4>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row border-top border-bottom"
+        *ngFor="let product of pastOrderProducts"
+      >
+        <div class="row main align-items-center flex justify-between">
+          <div class="col-2 flex gap-5">
+            <img
+              class="img-fluid"
+              [src]="'../../../assets/' + product.productImage"
+            />
+            <div>
+              <div class="row">{{ product.productName }}</div>
+            </div>
+          </div>
+
+          <div class="col flex">
+            x
+            {{ product.qty }}
+          </div>
+          <a class="col">
+            {{ product.price | currency }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <form class="w-[40%] summary">
+      <div>
+        <h2><b>Address Info</b></h2>
+        <div class="flex flex-col gap-2">
+          <div class="required flex gap-2 items-center justify-between">
+            <label for="name" class="label mb-2">
+              Name: {{ pastOrder.userName }}
+            </label>
+          </div>
+          <div class="required flex gap-2 items-center justify-between">
+            <label for="address" class="label mb-2"
+              >Address {{ pastOrder.address }}</label
+            >
+          </div>
+          <div class="required flex gap-2 items-center justify-between">
+            <label for="city" class="label mb-2"
+              >City {{ pastOrder.city }}</label
+            >
+          </div>
+          <div class="required flex gap-2 items-center justify-between">
+            <label for="state" class="label mb-2"
+              >State {{ pastOrder.state }}</label
+            >
+          </div>
+          <div class="required flex gap-2 items-center justify-between">
+            <label for="pin" class="label mb-2">Pin {{ pastOrder.pin }}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h5><b>Summary</b></h5>
+        </div>
+        <div class="row">
+          <div class="flex justify-between">
+            Cart total<span>{{ pastOrder.total | currency }}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="flex justify-between mb-2">
+            Shipping <span>Free ship</span>
+          </div>
+        </div>
+
+        <div class="row border-t-2 pt-2 mt-1">
+          <div class="col">TOTAL PRICE</div>
+          <div class="col text-right">
+            {{ pastOrder.total | currency }}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -3,15 +3,18 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { IUserLogin } from "../../models/interface/auth.interface";
 import { IUser } from "../../models/interface/user.interface";
+import { authRO, userInfoRO } from "../../models/ro/auth.ro";
 
 @Injectable()
 export class UserService {
   private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(
     false
   );
-
+  private loggedUserInfo: BehaviorSubject<userInfoRO> = new BehaviorSubject(
+    <userInfoRO>{}
+  );
   autoLogout: any;
-
+  infoUser: userInfoRO;
   constructor(private http: HttpClient) {
     this.loadToken();
   }
@@ -24,6 +27,14 @@ export class UserService {
     return this.isAuthenticated.asObservable();
   }
 
+  get loggedUser$(): Observable<userInfoRO> {
+    return this.loggedUserInfo.asObservable();
+  }
+
+  get loggedUser(): userInfoRO {
+    return this.loggedUserInfo.value;
+  }
+
   createUser(user: IUser): Observable<any> {
     const url: string = "http://localhost:5001/users/signup";
     return this.http.post(url, user);
@@ -34,11 +45,16 @@ export class UserService {
     return this.http.post(url, account);
   }
 
-  activateToken() {
+  activateToken(token: authRO) {
     this.isAuthenticated.next(true);
+    this.setAutoLogout(token.expiresInSeconds * 1000);
+    this.loggedUserInfo.next(token.user);
+    this.infoUser = token.user;
+    console.log(" this.infoUser ", this.infoUser);
   }
 
   logout() {
+    localStorage.clear();
     this.isAuthenticated.next(false);
     clearTimeout(this.autoLogout);
   }
@@ -53,7 +69,8 @@ export class UserService {
         new Date(expiredTime).getTime() - new Date().getTime();
       if (expiredIn > 0) {
         this.isAuthenticated.next(true);
-        this.setAutoLogout(expiredIn * 1000);
+        this.loggedUserInfo.next(this.infoUser);
+        this.setAutoLogout(expiredIn);
       } else {
         this.logout();
       }

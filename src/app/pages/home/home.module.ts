@@ -13,12 +13,14 @@ import { RatingModule } from "primeng/rating";
 import { CartStoreItem } from "src/app/core/services/cart/cart.storeItem";
 import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
 import { CategoryService } from "src/app/core/services/category/category.service";
+import { OrderService } from "src/app/core/services/order/order.service";
 import { ProductService } from "src/app/core/services/product/product.service";
 import { ProductStoreItem } from "src/app/core/services/product/product.storeItem";
 import { UserService } from "src/app/core/services/user/user.service";
 import { CartComponent } from "../cart/cart.component";
 import { CateNavigateComponent } from "../cate-navigate/cate-navigate.component";
 import { HeaderComponent } from "../header/header.component";
+import { PastOrderComponent } from "../past-order/past-order.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
 import { ProductItemComponent } from "../product-item/product-item.component";
 import { ProductsComponent } from "../products/products.component";
@@ -39,6 +41,7 @@ import { HomeComponent } from "./home.component";
     CartComponent,
     SignupComponent,
     SigninComponent,
+    PastOrderComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +57,7 @@ import { HomeComponent } from "./home.component";
     HomeRoutingModule,
     BadgeModule,
     ReactiveFormsModule,
+    DropdownModule,
   ],
   providers: [
     CategoryService,
@@ -62,6 +66,7 @@ import { HomeComponent } from "./home.component";
     ProductStoreItem,
     CartStoreItem,
     UserService,
+    OrderService,
   ],
   bootstrap: [],
 })

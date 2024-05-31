@@ -27,7 +27,9 @@
       </div>
 
       <div *ngIf="isUserAuthenticated">
-        {{ userName }} | <span (click)="logout()">Logout</span>
+        <span> {{ userName }}</span>
+        | <span (click)="pastOrder()">Past Order</span> |
+        <span (click)="logout()">Logout</span>
       </div>
     </div>
     <a class="flex" routerLink="/home/cart">
