@@ -34,7 +34,17 @@
               [src]="'../../../assets/' + product.productImage"
             />
             <div>
-              <div class="row">{{ product.productName }}</div>
+              <div>
+                <div class="row">{{ product.productName }}</div>
+              </div>
+              <p-rating
+                [(ngModel)]="product.rating"
+                [cancel]="false"
+                [readonly]="true"
+                class="text-[#FF9632]"
+                style="color: #ff9632"
+                [iconOnStyle]="{ color: '##FF9632' }"
+              />
             </div>
           </div>
 

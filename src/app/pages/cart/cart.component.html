@@ -74,7 +74,7 @@
 
       <div class="back-to-shop">
         <a routerLink="../products"
-          >&leftarrow;<span class="text-muted">Back to shop</span></a
+          >&leftarrow;<span class="text-muted ml-2">Back to shop</span></a
         >
       </div>
     </div>
@@ -144,15 +144,17 @@
           </div>
         </div>
 
-        <div class="row border-t-2 pt-2 mt-1">
+        <div class="row border-t-2 pt-2 mt-1 flex justify-between">
           <div class="col">TOTAL PRICE</div>
-          <div class="col text-right">
+          <div class="col text-right font-bold">
             {{ cartStore.cart.totalAmount | currency }}
           </div>
         </div>
       </div>
 
-      <button class="btn" [disabled]="!orderForm.valid">CHECKOUT</button>
+      <button class="btn !p-2 font-bold" [disabled]="!orderForm.valid">
+        CHECKOUT
+      </button>
     </form>
   </div>
 </div>

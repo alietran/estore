@@ -31,6 +31,7 @@ export interface PastOrderProduct {
   productName: string;
   productId: number;
   productImage: string;
+  rating: number;
   qty: number;
   price: number;
   amount: number;

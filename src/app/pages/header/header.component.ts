@@ -45,6 +45,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.searchClicked.emit(keyword);
   }
 
+  onKeyUp(event: any): void {
+    if (event.key === "Enter") {
+      this.onClickSearch(event.target.value);
+    }
+  }
   logout() {
     this.userService.logout();
     this.router.navigate(["home/products"]);

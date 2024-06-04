@@ -11,7 +11,7 @@ import { ProductService } from "src/app/core/services/product/product.service";
   styleUrl: "./product-detail.component.scss",
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
-  product : IProduct;
+  product: IProduct;
   subscription: Subscription = new Subscription();
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,14 +26,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.productService.getDetailProduct(detailId).subscribe((product) => {
         this.product = product[0];
-        console.log(this.product);
       })
     );
   }
 
-
-  addToCart(){
-    this.cartStore.addProduct(this.product)
+  addToCart() {
+    this.cartStore.addProduct(this.product);
   }
 
   ngOnDestroy(): void {

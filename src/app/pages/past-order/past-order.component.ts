@@ -26,11 +26,9 @@ export class PastOrderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log(this.email);
     if (this.userService.isUserAuthenticated) {
       this.subscription.add(
         this.orderService.getOrders(this.email).subscribe((result) => {
-          console.log("result", result);
           this.pastOrders = result;
         })
       );
@@ -38,12 +36,10 @@ export class PastOrderComponent implements OnInit, OnDestroy {
   }
 
   selectOrder(event: any): void {
-    console.log("event", event);
     if (Number.parseInt(event.target.value) > 0) {
       this.pastOrder = this.pastOrders.filter(
         (order) => order.orderId === Number.parseInt(event.target.value)
       )[0];
-      console.log("pastOrder[0]", this.pastOrder);
       this.getOrderProducts(this.pastOrder.orderId);
     } else {
       this.pastOrder = <any>undefined;
@@ -53,11 +49,9 @@ export class PastOrderComponent implements OnInit, OnDestroy {
 
   getOrderProducts(orderId: number) {
     this.subscription.add(
-      this.orderService.getOrderProducts(orderId).subscribe(
-        (products) =>
-          // console.log("products", products)
-          (this.pastOrderProducts = products)
-      )
+      this.orderService
+        .getOrderProducts(orderId)
+        .subscribe((products) => (this.pastOrderProducts = products))
     );
   }
 

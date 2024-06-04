@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   user: userInfoRO;
   subscriptions: Subscription = new Subscription();
   alertMessage: string;
-
+  userName = "";
   constructor(
     public cartStore: CartStoreItem,
     private fb: FormBuilder,
@@ -40,11 +40,12 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const isAuthenticated = this.userService.isUserAuthenticated;
+    this.userName = isAuthenticated
+      ? `${this.user.firstName} ${this.user.lastName}`
+      : "";
     this.orderForm = this.fb.group({
-      name: [
-        `${this.user.firstName} ${this.user.lastName}`,
-        Validators.required,
-      ],
+      name: [this.userName, Validators.required],
       address: [this.user.address, Validators.required],
       pin: [this.user.pin, Validators.required],
       state: [this.user.state, Validators.required],
@@ -77,13 +78,11 @@ export class CartComponent implements OnInit {
       const email = this.user.email ?? "";
       this.subscriptions.add(
         this.orderService.saveOrder(deliveryAddress, email).subscribe({
-          next: (result) => {
+          next: () => {
             this.cartStore.clearCart();
             this.alertMessage = "Order saved successfully";
-            console.log(result);
           },
           error: (err) => {
-            console.log(err);
             if (err.error.message === "Authentication failed") {
               this.alertMessage = "Please login to checkout the order";
             } else {

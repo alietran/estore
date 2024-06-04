@@ -50,7 +50,6 @@ export class UserService {
     this.setAutoLogout(token.expiresInSeconds * 1000);
     this.loggedUserInfo.next(token.user);
     this.infoUser = token.user;
-    console.log(" this.infoUser ", this.infoUser);
   }
 
   logout() {

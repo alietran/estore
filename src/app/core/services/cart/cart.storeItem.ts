@@ -55,7 +55,9 @@ export class CartStoreItem extends StoreItem<ICart> {
     );
     this.cart.totalProducts -= cartItem.quantity;
     this.cart.totalAmount -= cartItem.amount;
+
     if (this.cart.totalProducts === 0) {
+      this.cart.totalAmount = 0;
       sessionStorage.clear();
     } else {
       this.saveCart();
