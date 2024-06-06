@@ -2,3 +2,8 @@
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
   color: #faaf00 !important;
 }
+
+:host ::ng-deep .p-component img {
+  object-fit: contain;
+  height: 300px !important;
+}

@@ -22,12 +22,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   isUserAuthenticated: boolean = false;
-  userName: string;
+  userName: string = "";
 
   constructor(
     public categoriesStoreItem: CategoryStoreItem,
     public cartStore: CartStoreItem,
-    private userService: UserService,
+    public userService: UserService,
     private router: Router
   ) {
     this.subscription.add(
@@ -35,8 +35,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isUserAuthenticated = value;
       })
     );
-    const storedUserName = localStorage.getItem("userName");
-    this.userName = storedUserName !== null ? JSON.parse(storedUserName) : "";
+
+    this.subscription.add(
+      this.userService.loggedUser$.subscribe((value) => {
+        if (value) {
+          this.userName = value.firstName + " " + value.lastName;
+        } else {
+          const user = localStorage.getItem("userName");
+          if (user) {
+            this.userName = JSON.parse(user);
+          }
+        }
+      })
+    );
   }
 
   ngOnInit() {}

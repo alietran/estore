@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { Subscription } from "rxjs";
 import {
   DeliveryAddress,
@@ -21,11 +23,14 @@ export class CartComponent implements OnInit {
   subscriptions: Subscription = new Subscription();
   alertMessage: string;
   userName = "";
+
   constructor(
     public cartStore: CartStoreItem,
     private fb: FormBuilder,
     private userService: UserService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.user = {
       firstName: "",
@@ -80,17 +85,15 @@ export class CartComponent implements OnInit {
         this.orderService.saveOrder(deliveryAddress, email).subscribe({
           next: () => {
             this.cartStore.clearCart();
-            this.alertMessage = "Order saved successfully";
+            this.toastr.success("Order saved successfully");
           },
           error: (err) => {
-            if (err.error.message === "Authentication failed") {
-              this.alertMessage = "Please login to checkout the order";
-            } else {
-              this.alertMessage = err.error.message;
-            }
+            this.toastr.error(err.error.message);
           },
         })
       );
+    } else {
+      this.router.navigate(["/home/signin"]);
     }
   }
 }

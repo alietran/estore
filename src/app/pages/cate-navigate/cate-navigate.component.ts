@@ -23,10 +23,9 @@ export class CateNavigateComponent {
         this.displayOptions =
           (event as NavigationEnd).url === "/home/products" ? true : false;
       });
-}
+  }
 
-
-  onCategoryClick(mainCate: ICategory): void {
-    this.mainCategoryClicked.emit(mainCate.id);
+  onCategoryClick(mainCateId: number): void {
+    this.mainCategoryClicked.emit(mainCateId);
   }
 }

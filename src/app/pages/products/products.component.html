@@ -1,19 +1,21 @@
 <div class="flex gap-10 flex-wrap justify-around">
   <p-card
+    class="card"
     header="{{ item.price | currency }}"
     subheader="{{ item.product_name }}"
     [style]="{ width: '300px',}"
     *ngFor="let item of productStoreItem.products$ | async"
   >
     <ng-template pTemplate="header">
-      <a [routerLink]="['../product', item.id]">
-        <img
-          [src]="'../../../assets/' + item.product_img"
-          [alt]="'../../../assets/' + item.product_img"
-          width="300"
-          height="300"
-        />
-      </a>
+      <div class="p-4">
+        <a [routerLink]="['../product', item.id]">
+          <img
+            [src]="'../../../assets/' + item.product_img"
+            [alt]="'../../../assets/' + item.product_img"
+            class="image-size"
+          />
+        </a>
+      </div>
     </ng-template>
     <p class="p-0">
       <p-rating

@@ -1,9 +1,9 @@
 <div class="navigation-container">
   <ul>
-    <li><a routerLink="products">Home</a></li>
+    <li><a routerLink="products" (click)="onCategoryClick(0)">Home</a></li>
     <ng-container *ngIf="displayOptions">
       <li *ngFor="let category of categoryStore.topLevelCategories$ | async">
-        <a (click)="onCategoryClick(category)">{{ category.category }}</a>
+        <a (click)="onCategoryClick(category.id)">{{ category.category }}</a>
       </li>
     </ng-container>
   </ul>

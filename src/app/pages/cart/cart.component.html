@@ -78,10 +78,13 @@
         >
       </div>
     </div>
-    <form class="w-[40%] summary" (submit)="onSubmit()" [formGroup]="orderForm">
+    <form class="w-[40%] summary" [formGroup]="orderForm">
       <div>
         <h2><b>Address Info</b></h2>
-        <div class="flex flex-col gap-2">
+        <span *ngIf="userName === ''" class="text-red-400"
+          >Note: Please login before checkout!</span
+        >
+        <div class="flex flex-col gap-2 mt-2">
           <div class="required flex gap-2 items-center justify-between">
             <label for="name" class="label mb-2"> Name</label>
             <input
@@ -152,7 +155,7 @@
         </div>
       </div>
 
-      <button class="btn !p-2 font-bold" [disabled]="!orderForm.valid">
+      <button class="btn !p-2 font-bold rounded-md" (click)="onSubmit()">
         CHECKOUT
       </button>
     </form>

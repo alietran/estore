@@ -5,6 +5,8 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+
+@import "ngx-toastr/toastr";
 /* Order */
 @layer reset, primeng;
 
@@ -16,23 +18,22 @@
   }
 }
 
-
 @mixin underline_transition($width) {
-  &::after{
-  content: '';
-  display: block;
-  bottom: 0;
-  right: 0;
-  top: 0;
-  left: 0;
-  height: 0.2rem;
-  background-color: red;
-  transform: scaleX(0);
-  transition-property: transform;
-  transition-duration: 0.2s;
+  &::after {
+    content: "";
+    display: block;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    height: 0.2rem;
+    background-color: red;
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: 0.2s;
   }
-  &:hover{
-    &::after{
+  &:hover {
+    &::after {
       transform: scaleX($width);
     }
   }

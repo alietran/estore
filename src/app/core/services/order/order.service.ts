@@ -4,9 +4,9 @@ import { Observable } from "rxjs";
 import { DeliveryAddress } from "../../models/interface/cart.interface";
 import {
   Order,
+  OrderDetail,
   OrderItem,
   PastOrder,
-  PastOrderProduct,
 } from "../../models/interface/order.interface";
 import { CartStoreItem } from "../cart/cart.storeItem";
 
@@ -63,9 +63,9 @@ export class OrderService {
     });
   }
 
-  getOrderProducts(orderId: number): Observable<PastOrderProduct[]> {
+  getOrderProducts(orderId: number): Observable<OrderDetail[]> {
     const url: string = `http://localhost:5001/orders/order-product?orderId=${orderId}`;
-    return this.httpClient.get<PastOrderProduct[]>(url, {
+    return this.httpClient.get<OrderDetail[]>(url, {
       headers: {
         authorization: this.token !== null ? JSON.parse(this.token) : null,
       },

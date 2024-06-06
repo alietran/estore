@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { authGuard } from "src/app/core/guard/auth.guard";
 import { CartComponent } from "../cart/cart.component";
+import { PastOrderDetailComponent } from "../past-order-detail/past-order-detail.component";
 import { PastOrderComponent } from "../past-order/past-order.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
 import { ProductItemComponent } from "../product-item/product-item.component";
@@ -22,6 +23,11 @@ const routes: Routes = [
       {
         path: "past-order",
         component: PastOrderComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: "past-order/:id",
+        component: PastOrderDetailComponent,
         canActivate: [authGuard],
       },
     ],

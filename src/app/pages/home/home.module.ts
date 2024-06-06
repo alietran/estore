@@ -20,6 +20,7 @@ import { UserService } from "src/app/core/services/user/user.service";
 import { CartComponent } from "../cart/cart.component";
 import { CateNavigateComponent } from "../cate-navigate/cate-navigate.component";
 import { HeaderComponent } from "../header/header.component";
+import { PastOrderDetailComponent } from "../past-order-detail/past-order-detail.component";
 import { PastOrderComponent } from "../past-order/past-order.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
 import { ProductItemComponent } from "../product-item/product-item.component";
@@ -42,6 +43,7 @@ import { HomeComponent } from "./home.component";
     SignupComponent,
     SigninComponent,
     PastOrderComponent,
+    PastOrderDetailComponent,
   ],
   imports: [
     CommonModule,

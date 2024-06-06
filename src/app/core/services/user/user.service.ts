@@ -7,10 +7,8 @@ import { authRO, userInfoRO } from "../../models/ro/auth.ro";
 
 @Injectable()
 export class UserService {
-  private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(
-    false
-  );
-  private loggedUserInfo: BehaviorSubject<userInfoRO> = new BehaviorSubject(
+  public isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  public loggedUserInfo: BehaviorSubject<userInfoRO> = new BehaviorSubject(
     <userInfoRO>{}
   );
   autoLogout: any;
@@ -55,6 +53,7 @@ export class UserService {
   logout() {
     localStorage.clear();
     this.isAuthenticated.next(false);
+
     clearTimeout(this.autoLogout);
   }
 

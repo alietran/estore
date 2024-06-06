@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import {
-  PastOrder,
-  PastOrderProduct,
-} from "src/app/core/models/interface/order.interface";
+import { PastOrder } from "src/app/core/models/interface/order.interface";
 import { OrderService } from "src/app/core/services/order/order.service";
 import { UserService } from "src/app/core/services/user/user.service";
 
@@ -13,7 +11,6 @@ import { UserService } from "src/app/core/services/user/user.service";
   styleUrl: "./past-order.component.scss",
 })
 export class PastOrderComponent implements OnInit, OnDestroy {
-  pastOrderProducts: PastOrderProduct[] = [];
   pastOrder: PastOrder;
   pastOrders: PastOrder[] = [];
   subscription: Subscription = new Subscription();
@@ -22,7 +19,8 @@ export class PastOrderComponent implements OnInit, OnDestroy {
 
   constructor(
     private orderService: OrderService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -35,24 +33,8 @@ export class PastOrderComponent implements OnInit, OnDestroy {
     }
   }
 
-  selectOrder(event: any): void {
-    if (Number.parseInt(event.target.value) > 0) {
-      this.pastOrder = this.pastOrders.filter(
-        (order) => order.orderId === Number.parseInt(event.target.value)
-      )[0];
-      this.getOrderProducts(this.pastOrder.orderId);
-    } else {
-      this.pastOrder = <any>undefined;
-      this.pastOrderProducts = [];
-    }
-  }
-
-  getOrderProducts(orderId: number) {
-    this.subscription.add(
-      this.orderService
-        .getOrderProducts(orderId)
-        .subscribe((products) => (this.pastOrderProducts = products))
-    );
+  getOrderDetails(orderId: number) {
+    this.router.navigate(["/home/past-order", orderId]);
   }
 
   ngOnDestroy(): void {

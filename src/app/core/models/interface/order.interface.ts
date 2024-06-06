@@ -18,13 +18,12 @@ export interface OrderItem {
 
 export interface PastOrder {
   userName: string;
-  address: string;
-  city: string;
-  state: string;
-  pin: string;
+
   total: number;
   orderDate: string;
   orderId: number;
+  amount: number;
+  products: PastOrderProduct[];
 }
 
 export interface PastOrderProduct {
@@ -32,7 +31,21 @@ export interface PastOrderProduct {
   productId: number;
   productImage: string;
   rating: number;
-  qty: number;
+  quantity: number;
   price: number;
-  amount: number;
+}
+
+export interface OrderDetail {
+  address: string;
+  city: string;
+  state: string;
+  pin: string;
+  productName: string;
+  productId: number;
+  productImage: string;
+  rating: number;
+  quantity: number;
+  price: number;
+  userName: string;
+  amount: string;
 }

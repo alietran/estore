@@ -30,7 +30,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   onSelectCate(cateId: number) {
-    this.productStoreItem.loadProduct("maincategoryid=" + cateId);
+    if (cateId === 0) {
+      this.productStoreItem.loadProduct();
+    } else {
+      this.productStoreItem.loadProduct("maincategoryid=" + cateId);
+    }
   }
 
   onSearchKey(searchKeyWord: string) {
