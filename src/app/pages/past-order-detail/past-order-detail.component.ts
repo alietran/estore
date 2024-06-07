@@ -28,6 +28,15 @@ export class PastOrderDetailComponent {
         .subscribe((products) => (this.pastOrderProduct = products[0]))
     );
   }
+
+  // getOrderDetails() {
+  //   this.subscription.add(
+  //     this.orderService
+  //       .getOrderProducts(this.orderId)
+  //       .subscribe((products) => console.log(products))
+  //   );
+  // }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

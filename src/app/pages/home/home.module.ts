@@ -17,6 +17,7 @@ import { OrderService } from "src/app/core/services/order/order.service";
 import { ProductService } from "src/app/core/services/product/product.service";
 import { ProductStoreItem } from "src/app/core/services/product/product.storeItem";
 import { UserService } from "src/app/core/services/user/user.service";
+import { DateformatPipe } from "src/app/pipes/dateformat.pipe";
 import { CartComponent } from "../cart/cart.component";
 import { CateNavigateComponent } from "../cate-navigate/cate-navigate.component";
 import { HeaderComponent } from "../header/header.component";
@@ -44,6 +45,7 @@ import { HomeComponent } from "./home.component";
     SigninComponent,
     PastOrderComponent,
     PastOrderDetailComponent,
+    DateformatPipe,
   ],
   imports: [
     CommonModule,

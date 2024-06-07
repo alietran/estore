@@ -33,6 +33,7 @@ export interface PastOrderProduct {
   rating: number;
   quantity: number;
   price: number;
+  amount?: number;
 }
 
 export interface OrderDetail {
@@ -40,12 +41,12 @@ export interface OrderDetail {
   city: string;
   state: string;
   pin: string;
-  productName: string;
-  productId: number;
-  productImage: string;
   rating: number;
   quantity: number;
   price: number;
   userName: string;
   amount: string;
+  orderDate: string;
+  total: string;
+  products: PastOrderProduct[];
 }

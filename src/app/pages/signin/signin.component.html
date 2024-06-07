@@ -37,10 +37,9 @@
           >
         </div>
         <div class="group">
-          <span class="text-white" *ngIf="!loginSuccess">
+          <span class="text-white">
             Don't have account ? <a routerLink="/home/signup">Sign up</a></span
           >
-          <span *ngIf="loginSuccess">{{ userInfo }}</span>
         </div>
         <div class="group">
           <input type="submit" class="button" value="Sign In" />
