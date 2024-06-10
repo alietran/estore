@@ -6,4 +6,21 @@
 :host ::ng-deep .p-component img {
   object-fit: contain;
   height: 300px !important;
+  width: 100%;
+}
+
+::ng-deep .p-image {
+  width: 100%;
+}
+
+::ng-deep.p-highlight {
+  color: #3c82f6;
+  border-bottom: 4px solid #3c82f6;
+}
+
+.text-truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }

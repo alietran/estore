@@ -11,6 +11,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { ImageModule } from "primeng/image";
 import { MenubarModule } from "primeng/menubar";
 import { RatingModule } from "primeng/rating";
+import { TabViewModule } from "primeng/tabview";
 import { CartStoreItem } from "src/app/core/services/cart/cart.storeItem";
 import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
 import { CategoryService } from "src/app/core/services/category/category.service";
@@ -32,6 +33,7 @@ import { SigninComponent } from "../signin/signin.component";
 import { SignupComponent } from "../signup/signup.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -64,6 +66,7 @@ import { HomeComponent } from "./home.component";
     ReactiveFormsModule,
     DropdownModule,
     NgxPaginationModule,
+    TabViewModule,
   ],
   providers: [
     CategoryService,

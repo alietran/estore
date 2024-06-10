@@ -47,6 +47,8 @@ export class SigninComponent {
           this.errLogin = true;
         }
       );
+    } else {
+      this.errLogin = true;
     }
   }
 }
