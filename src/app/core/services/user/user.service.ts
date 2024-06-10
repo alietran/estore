@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { IUserLogin } from "../../models/interface/auth.interface";
 import { IUser } from "../../models/interface/user.interface";
 import { authRO, userInfoRO } from "../../models/ro/auth.ro";
@@ -34,12 +35,12 @@ export class UserService {
   }
 
   createUser(user: IUser): Observable<any> {
-    const url: string = "http://localhost:5001/users/signup";
+    const url: string = `${environment.apiBaseUrl}/users/signup`;
     return this.http.post(url, user);
   }
 
   login(account: IUserLogin): Observable<any> {
-    const url: string = "http://localhost:5001/users/login";
+    const url: string = `${environment.apiBaseUrl}/users/login`;
     return this.http.post(url, account);
   }
 

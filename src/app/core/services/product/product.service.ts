@@ -19,7 +19,7 @@ export class ProductService {
   }
 
   getDetailProduct(id: number): Observable<IProduct[]> {
-    const url: string = "http://localhost:5001/products/" + id;
+    const url: string = `${environment.apiBaseUrl}/products/` + id;
     return this.httpClient.get<IProduct[]>(url);
   }
 }

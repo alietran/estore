@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { DeliveryAddress } from "../../models/interface/cart.interface";
 import {
   Order,
@@ -24,7 +25,7 @@ export class OrderService {
     deliveryAddress: DeliveryAddress,
     userEmail: string
   ): Observable<any> {
-    const url: string = "http://localhost:5001/orders/create";
+    const url: string = `${environment.apiBaseUrl}/orders/create`;
     const orderDetails: OrderItem[] = [];
 
     this.cartStore.cart.products.forEach((product) => {
@@ -55,7 +56,7 @@ export class OrderService {
   }
 
   getOrders(userEmail: string): Observable<PastOrder[]> {
-    const url: string = `http://localhost:5001/orders/all-orders?userEmail=${userEmail}`;
+    const url: string = `${environment.apiBaseUrl}/orders/all-orders?userEmail=${userEmail}`;
     return this.httpClient.get<PastOrder[]>(url, {
       headers: {
         authorization: this.token !== null ? JSON.parse(this.token) : null,
@@ -64,7 +65,7 @@ export class OrderService {
   }
 
   getOrderProducts(orderId: number): Observable<OrderDetail[]> {
-    const url: string = `http://localhost:5001/orders/order-product?orderId=${orderId}`;
+    const url: string = `${environment.apiBaseUrl}/orders/order-product?orderId=${orderId}`;
     return this.httpClient.get<OrderDetail[]>(url, {
       headers: {
         authorization: this.token !== null ? JSON.parse(this.token) : null,
