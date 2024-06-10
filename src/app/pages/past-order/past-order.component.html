@@ -1,7 +1,10 @@
 <div>
-  <h2 class="text-center text-2xl font-bold my-4">Order List</h2>
+  <h2 class="text-center text-2xl font-bold my-4">My Order</h2>
   <div
-    *ngFor="let productItem of pastOrders"
+    *ngFor="
+      let productItem of pastOrders
+        | paginate : { itemsPerPage: 2, currentPage: p }
+    "
     class="bg-slate-50 mx-auto w-3/4 mt-5 mb-2 p-5 shadow-md rounded-[15px] border-spacing-1"
   >
     <div className="flex">
@@ -55,14 +58,20 @@
     <div class="flex justify-between mt-3">
       <p>
         Total :
-        <span class="font-bold">{{ productItem.total | currency }}</span>
+        <span class="font-bold text-[#475569]">{{
+          productItem.total | currency
+        }}</span>
       </p>
       <button
-        class="bg-green-400 p-2 !rounded-md"
+        class="bg-[#475569] p-2 !rounded-md text-white"
         (click)="getOrderDetails(productItem.orderId)"
       >
         View Details
       </button>
     </div>
   </div>
+  <pagination-controls
+    class="my-pagination w-3/4 mx-auto"
+    (pageChange)="p = $event"
+  ></pagination-controls>
 </div>

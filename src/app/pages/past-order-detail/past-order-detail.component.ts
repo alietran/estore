@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { OrderDetail } from "src/app/core/models/interface/order.interface";
 import { OrderService } from "src/app/core/services/order/order.service";
@@ -15,7 +15,8 @@ export class PastOrderDetailComponent {
   pastOrderProduct: OrderDetail;
   constructor(
     private orderService: OrderService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.orderId = this.route.snapshot.params["id"];
     this.getOrderDetails();
@@ -29,13 +30,9 @@ export class PastOrderDetailComponent {
     );
   }
 
-  // getOrderDetails() {
-  //   this.subscription.add(
-  //     this.orderService
-  //       .getOrderProducts(this.orderId)
-  //       .subscribe((products) => console.log(products))
-  //   );
-  // }
+  back() {
+    this.router.navigate(["home/past-order"]);
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

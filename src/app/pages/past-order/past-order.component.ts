@@ -16,12 +16,17 @@ export class PastOrderComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   userInfoJson = localStorage.getItem("userInfo");
   email = this.userInfoJson ? JSON.parse(this.userInfoJson).email : "";
-
+  collection: any = [];
+  p: number = 1;
   constructor(
     private orderService: OrderService,
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+    for (let i = 1; i <= 100; i++) {
+      this.collection.push(`item ${i}`);
+    }
+  }
 
   ngOnInit() {
     if (this.userService.isUserAuthenticated) {

@@ -3,6 +3,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { NgxPaginationModule } from "ngx-pagination";
 import { AccordionModule } from "primeng/accordion";
 import { BadgeModule } from "primeng/badge";
 import { CardModule } from "primeng/card";
@@ -62,6 +63,7 @@ import { HomeComponent } from "./home.component";
     BadgeModule,
     ReactiveFormsModule,
     DropdownModule,
+    NgxPaginationModule,
   ],
   providers: [
     CategoryService,

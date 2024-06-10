@@ -157,3 +157,12 @@ a:hover {
   background-position-x: 95%;
   background-position-y: center;
 }
+
+.my-pagination ::ng-deep .ngx-pagination {
+  margin: 30px auto;
+  width: 75%;
+
+  .current {
+    background: #475569;
+  }
+}

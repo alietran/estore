@@ -1,5 +1,5 @@
 <div class="font-inter antialiased bg-slate-100">
-  <main class="min-h-screen flex flex-col bg-slate-50 overflow-hidden">
+  <main class="min-h-screen flex flex-col overflow-hidden">
     <h2 class="text-center text-2xl font-bold py-4">Order Detail</h2>
     <div
       class="w-full mx-auto px-4 md:px-5 bg-slate-100"
@@ -27,7 +27,12 @@
               {{ pastOrderProduct.orderDate | dateformat }}
             </p>
             <p>Status: {{ pastOrderProduct.pin }}</p>
-            <p>Total: {{ pastOrderProduct.total | currency }}</p>
+            <p>
+              Total:
+              <span class="text-[#475569] font-bold">{{
+                pastOrderProduct.total | currency
+              }}</span>
+            </p>
           </div>
         </div>
       </div>
@@ -118,6 +123,9 @@
           </div>
         </div>
       </div>
+      <p class="mt-8 text-blue-400">
+        <a routerLink="/home/past-order"> &leftarrow; Back</a>
+      </p>
     </div>
   </main>
 </div>
