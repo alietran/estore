@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
+import { DeviceDetectorService } from "ngx-device-detector";
 import { filter } from "rxjs";
 import { ICategory } from "src/app/core/models/interface/category.interface";
 import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
@@ -12,10 +13,12 @@ import { ProductStoreItem } from "src/app/core/services/product/product.storeIte
 })
 export class HomeComponent implements OnInit {
   items: ICategory[] = [];
+  isMobile = false;
   constructor(
     private categoriesStoreItem: CategoryStoreItem,
     private productStoreItem: ProductStoreItem,
-    private router: Router
+    private router: Router,
+    private deviceService: DeviceDetectorService
   ) {
     this.categoriesStoreItem.loadCategory();
     this.productStoreItem.loadProduct();
@@ -27,7 +30,10 @@ export class HomeComponent implements OnInit {
         }
       });
   }
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
+  }
 
   onSelectCate(cateId: number) {
     if (cateId === 0) {

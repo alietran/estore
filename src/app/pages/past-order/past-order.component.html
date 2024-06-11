@@ -5,7 +5,7 @@
       let productItem of pastOrders
         | paginate : { itemsPerPage: 2, currentPage: p }
     "
-    class="bg-slate-50 mx-auto w-3/4 mt-5 mb-2 p-5 shadow-md rounded-[15px] border-spacing-1"
+    class="bg-slate-50 mx-auto w-3/4 mt-5 mb-2 p-5 shadow-md rounded-[15px] border-spacing-1 past-order"
   >
     <div className="flex">
       <p className="flex">Order ID: {{ productItem.orderId }}</p>
@@ -19,9 +19,9 @@
             *ngFor="let product of productItem.products"
           >
             <div
-              class="row main align-items-center flex justify-between bg-slate-50"
+              class="row main align-items-center flex justify-between bg-slate-50 product-item"
             >
-              <div class="col-2 flex gap-5">
+              <div class="col-2 flex gap-5 product-name">
                 <img
                   class="img-fluid"
                   [src]="'../../../assets/' + product.productImage"
@@ -40,14 +40,15 @@
                   />
                 </div>
               </div>
-
-              <div class="col flex">
-                x
-                {{ product.quantity }}
+              <div class="col flex gap-10 cart-item">
+                <div class="col flex quantity">
+                  <span>x</span>
+                  {{ product.quantity }}
+                </div>
+                <a class="col">
+                  {{ product.price | currency }}
+                </a>
               </div>
-              <a class="col">
-                {{ product.price | currency }}
-              </a>
             </div>
           </div>
         </div>

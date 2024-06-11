@@ -1,8 +1,11 @@
-<div class="flex justify-between bg-slate-600 px-6 items-center">
+<div
+  class="flex justify-between bg-slate-600 px-6 items-center"
+  *ngIf="!isMobile"
+>
   <div class="logo">
     <img src="../../../assets/logo.png" class="mr-2 resize-image !h-[70px]" />
   </div>
-  <div class="flex">
+  <div class="flex search-input">
     <div class="card flex justify-content-center bg-gray-200"></div>
     <span class="p-input-icon-left">
       <input
@@ -20,7 +23,6 @@
   </div>
   <div class="flex gap-5 items-center text-white cursor-pointer">
     <div class="flex items-center gap-1">
-      <i class="pi pi-user"></i>
       <div *ngIf="!isUserAuthenticated">
         <span class="cursor-pointer" routerLink="signin"> Login </span>/<span
           class="cursor-pointer"
@@ -30,9 +32,17 @@
       </div>
 
       <div *ngIf="isUserAuthenticated">
-        <span> {{ userName }}</span>
-        | <span (click)="pastOrder()">Past Order</span> |
-        <span (click)="logout()">Logout</span>
+        <div class="dropdown">
+          <i class="pi pi-user"></i>
+          <span> {{ userName }}</span>
+          <div class="dropdown-content">
+            <a routerLink="past-order">
+              <span (click)="pastOrder()">Past Order</span></a
+            >
+
+            <a href="home/products"> <span (click)="logout()">Logout</span></a>
+          </div>
+        </div>
       </div>
     </div>
     <a class="flex" routerLink="/home/cart">

@@ -17,3 +17,12 @@
     }
   }
 }
+
+@media screen and (max-width: 375px) {
+  .navigation-container {
+    ul {
+      gap: 15px;
+      justify-content: space-evenly;
+    }
+  }
+}

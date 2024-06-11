@@ -209,3 +209,29 @@ a {
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
+@media screen and (max-width: 1024px) {
+  .signup-wrap {
+    height: calc(100vh - 135px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .signup-wrap {
+    height: calc(100vh - 115px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .input_box {
+    input {
+      font-size: 12px;
+    }
+  }
+  .reg_btn {
+    width: 100%;
+  }
+  .container {
+    max-width: 70%;
+  }
+}

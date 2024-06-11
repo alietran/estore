@@ -6,6 +6,7 @@ import {
   Output,
 } from "@angular/core";
 import { Router } from "@angular/router";
+import { DeviceDetectorService } from "ngx-device-detector";
 import { Subscription } from "rxjs";
 import { CartStoreItem } from "src/app/core/services/cart/cart.storeItem";
 import { CategoryStoreItem } from "src/app/core/services/category/categories.storeItem";
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output()
   searchClicked: EventEmitter<string> = new EventEmitter<string>();
   subscription: Subscription = new Subscription();
-
+  isMobile = false;
   isUserAuthenticated: boolean = false;
   userName: string = "";
 
@@ -28,7 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public categoriesStoreItem: CategoryStoreItem,
     public cartStore: CartStoreItem,
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    private deviceService: DeviceDetectorService
   ) {
     this.subscription.add(
       this.userService.isUserAuthenticated$.subscribe((value) => {
@@ -50,7 +52,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.deviceService.isMobile()) {
+      this.isMobile = true;
+    }
+  }
 
   onClickSearch(keyword: string) {
     this.searchClicked.emit(keyword);

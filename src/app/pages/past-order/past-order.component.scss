@@ -166,3 +166,38 @@ a:hover {
     background: #475569;
   }
 }
+
+.quantity::after {
+  content: "";
+}
+
+@media screen and (max-width: 576px) {
+  .past-order {
+    width: 85%;
+  }
+  .cart {
+    padding: 0;
+    .product-name {
+      gap: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .cart {
+    padding: 0;
+    .product-item {
+      flex-wrap: wrap;
+    }
+    .quantity {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+
+    .cart-item {
+      margin-top: 10px;
+      gap: 10px;
+    }
+  }
+}

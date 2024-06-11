@@ -15,7 +15,10 @@
   {{ alertMessage }}
 </div>
 <div class="card !my-10" *ngIf="cartStore.cart.products.length">
-  <div class="row w-full flex" *ngIf="cartStore.cart$ | async as cart">
+  <div
+    class="row w-full flex cart-list"
+    *ngIf="cartStore.cart$ | async as cart"
+  >
     <div class="w-[60%] cart relative">
       <div class="title">
         <div class="row">
@@ -28,7 +31,7 @@
         class="row border-top border-bottom"
         *ngFor="let cartItem of cart.products"
       >
-        <div class="row main align-items-center flex justify-between">
+        <div class="row main align-items-center flex justify-between gap-20">
           <div class="col-2 flex gap-5">
             <img
               class="img-fluid"
@@ -46,29 +49,30 @@
               />
             </div>
           </div>
-
-          <div class="col flex">
-            <a class="cursor-pointer" (click)="updateQuantity($event, cartItem)"
-              >-</a
-            >
-            <div href="#" class="border py-0 px-2 h-[45%] mx-2">
-              {{ cartItem.quantity }}
+          <div class="flex">
+            <div class="col flex mr-20">
+              <a
+                class="cursor-pointer"
+                (click)="updateQuantity($event, cartItem)"
+                >-</a
+              >
+              <div href="#" class="border py-0 px-2 h-[45%] mx-2">
+                {{ cartItem.quantity }}
+              </div>
+              <div
+                class="cursor-pointer"
+                (click)="updateQuantity($event, cartItem)"
+              >
+                +
+              </div>
             </div>
-            <div
-              class="cursor-pointer"
-              (click)="updateQuantity($event, cartItem)"
-            >
-              +
-            </div>
+            <a class="col">
+              {{ cartItem.product.price | currency }}
+            </a>
           </div>
-          <a class="col">
-            {{ cartItem.product.price | currency }}
-            <span
-              class="close cursor-pointer"
-              (click)="removeItemCart(cartItem)"
-              >&#10005;</span
-            >
-          </a>
+          <span class="close cursor-pointer" (click)="removeItemCart(cartItem)"
+            >&#10005;</span
+          >
         </div>
       </div>
 
@@ -85,7 +89,9 @@
           >Note: Please login before checkout!</span
         >
         <div class="flex flex-col gap-2 mt-2">
-          <div class="required flex gap-2 items-center justify-between">
+          <div
+            class="required flex gap-2 items-center justify-between address-info"
+          >
             <label for="name" class="label mb-2"> Name</label>
             <input
               id="name"
@@ -94,7 +100,9 @@
               formControlName="name"
             />
           </div>
-          <div class="required flex gap-2 items-center justify-between">
+          <div
+            class="required flex gap-2 items-center justify-between address-info"
+          >
             <label for="address" class="label mb-2">Address</label>
             <input
               id="address"
@@ -103,7 +111,9 @@
               formControlName="address"
             />
           </div>
-          <div class="required flex gap-2 items-center justify-between">
+          <div
+            class="required flex gap-2 items-center justify-between address-info"
+          >
             <label for="city" class="label mb-2">City</label>
             <input
               id="city"
@@ -112,7 +122,9 @@
               formControlName="city"
             />
           </div>
-          <div class="required flex gap-2 items-center justify-between">
+          <div
+            class="required flex gap-2 items-center justify-between address-info"
+          >
             <label for="state" class="label mb-2">State</label>
             <input
               id="state"
@@ -121,7 +133,9 @@
               formControlName="state"
             />
           </div>
-          <div class="required flex gap-2 items-center justify-between">
+          <div
+            class="required flex gap-2 items-center justify-between address-info"
+          >
             <label for="pin" class="label mb-2">Pin</label>
             <input
               id="pin"

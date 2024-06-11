@@ -163,3 +163,31 @@ a:hover {
   background-position-x: 95%;
   background-position-y: center;
 }
+
+@media screen and (max-width: 576px) {
+  .cart-list {
+    flex-direction: column;
+  }
+  .cart {
+    width: 100%;
+    padding: 2vh 1vh;
+  }
+
+  .summary {
+    width: 100%;
+  }
+
+  .input {
+    width: 100% !important;
+  }
+
+  .address-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-to-shop {
+    display: none;
+  }
+}

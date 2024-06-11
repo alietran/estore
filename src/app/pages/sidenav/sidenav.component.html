@@ -1,4 +1,4 @@
-<div class="card flex justify-content-center">
+<div class="card flex justify-content-center side-nav">
   <p-accordion [multiple]="true" class="w-60">
     <p-accordionTab
       *ngFor="let category of getCategories(); let i = index"
@@ -9,7 +9,9 @@
           class="text-center"
           *ngFor="let childCategory of getCategories(category.id)"
         >
-          <a (click)="onSubCategoryClick(childCategory)">{{ childCategory.category }}</a>
+          <a (click)="onSubCategoryClick(childCategory)">{{
+            childCategory.category
+          }}</a>
         </li>
       </ul>
     </p-accordionTab>
